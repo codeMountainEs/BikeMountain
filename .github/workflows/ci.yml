@@ -9,24 +9,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
     -uses: actions/checout@v2
-    -name: Setup PHP
-      uses: shivammathur/setup-php@v2
-      with:
-        php-version: '8.3.7'    
+    -name: Setup PHP  
+    uses: shivammathur/setup-php@v2
+    with:
+      php-version: '8.3.7'    
     -name: Install Dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
+    run: composer install --prefer-dist --no-progress --no-suggest
     -name: Copy .env
-      run: cp .env.example .env
+    run: cp .env.example .env
     -name: Generate key
-      run: php artisan key:generate
+    run: php artisan key:generate
     -name: Run Migrations 
-      run: php artisan migrate --env=testing --no-interaction -vvv
+    run: php artisan migrate --env=testing --no-interaction -vvv
     -name: Run Tests
-      run: php artisan test 
+    run: php artisan test 
 
-      
+
 
 
     
